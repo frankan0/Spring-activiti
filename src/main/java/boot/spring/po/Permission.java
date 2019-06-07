@@ -3,26 +3,40 @@ package boot.spring.po;
 import java.util.List;
 
 public class Permission {
-	int pid;
-	String permissionname;
-	List<Role_permission> rp;
-	public int getPid() {
-		return pid;
+	private Integer id;
+	private String name;
+	private List<RolePermission> rolePermissions;
+
+	public Integer getId() {
+		return id;
 	}
-	public void setPid(int pid) {
-		this.pid = pid;
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
-	public String getPermissionname() {
-		return permissionname;
+
+	public String getName() {
+		return name;
 	}
-	public void setPermissionname(String permissionname) {
-		this.permissionname = permissionname;
+
+	public void setName(String name) {
+		this.name = name;
 	}
-	public List<Role_permission> getRp() {
-		return rp;
+
+	public List<RolePermission> getRolePermissions() {
+		return rolePermissions;
 	}
-	public void setRp(List<Role_permission> rp) {
-		this.rp = rp;
+
+	public void setRolePermissions(List<RolePermission> rolePermissions) {
+		this.rolePermissions = rolePermissions;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Permission{" +
+				"id=" + id +
+				", name='" + name + '\'' +
+				", rolePermissions=" + rolePermissions +
+				'}';
+	}
 }

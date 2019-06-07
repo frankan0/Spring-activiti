@@ -50,7 +50,7 @@ public class SystemController {
 		List<Userinfo> users=new ArrayList<Userinfo>();
 		for(User user:userlist){
 			Userinfo u=new Userinfo();
-			int userid = user.getUid();
+			int userid = user.getId();
 			u.setId(userid);
 			u.setAge(user.getAge());
 			u.setPassword(user.getPassword());
@@ -60,9 +60,9 @@ public class SystemController {
 			List<UserRole> ur = systemservice.listRolesByUserid(userid);
 			if( ur != null && ur.size() > 0 ){
 				for( UserRole userole : ur ){
-					int roleid = userole.getRoleid();
+					int roleid = userole.getId();
 					Role r = systemservice.getRolebyid(roleid);
-					rolename=rolename+","+r.getRolename();
+					rolename=rolename+","+r.getName();
 				}
 				if(rolename.length()>0)
 					rolename=rolename.substring(1,rolename.length());
@@ -134,7 +134,7 @@ public class SystemController {
 	@RequestMapping(value="addrole",method=RequestMethod.POST)
 	String addrole(@RequestParam("rolename") String rolename,@RequestParam(value="permissionname[]")String[] permissionname){
 		Role r=new Role();
-		r.setRolename(rolename);
+		r.setName(rolename);
 		systemservice.addrole(r, permissionname);
 		return "forward:/roleadmin";
 	}

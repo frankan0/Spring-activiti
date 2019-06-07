@@ -1,26 +1,40 @@
 package boot.spring.po;
 
-public class Role_permission {
-	int rpid;
+public class RolePermission {
+	int id;
 	Role role;
 	Permission permission;
-	public int getRpid() {
-		return rpid;
+
+	public int getId() {
+		return id;
 	}
-	public void setRpid(int rpid) {
-		this.rpid = rpid;
+
+	public void setId(int id) {
+		this.id = id;
 	}
+
 	public Role getRole() {
 		return role;
 	}
+
 	public void setRole(Role role) {
 		this.role = role;
 	}
+
 	public Permission getPermission() {
 		return permission;
 	}
+
 	public void setPermission(Permission permission) {
 		this.permission = permission;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "RolePermission{" +
+				"id=" + id +
+				", role=" + role +
+				", permission=" + permission +
+				'}';
+	}
 }

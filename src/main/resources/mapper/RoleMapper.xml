@@ -7,7 +7,7 @@
 	<resultMap type="boot.spring.po.Role" id="roleMap">
         <id column="rid" property="rid" ></id>
         <result column="rolename" property="rolename"/>
-        <collection property="role_permissions" column="roleid" ofType="boot.spring.po.Role_permission">  
+        <collection property="role_permissions" column="roleid" ofType="boot.spring.po.RolePermission">
             <id property="rpid" column="rpid" />
             <association column="permissionid" property="permission" javaType="boot.spring.po.Permission">
 	        	<id column="pid" property="pid"></id>
@@ -24,7 +24,7 @@
     	select * from role left join role_permission on role.rid=role_permission.roleid left join permission 
     	on role_permission.permissionid=permission.pid
     </select>
-    <insert id="adduserrole" useGeneratedKeys="true" keyProperty="urid" parameterType="boot.spring.po.User_role">
+    <insert id="adduserrole" useGeneratedKeys="true" keyProperty="urid" parameterType="boot.spring.po.UserRoleRelation">
     	 insert into user_role (userid,roleid)
 	  	 values (#{user.uid},#{role.rid})
     </insert>
@@ -34,7 +34,7 @@
     <insert id="addRole" useGeneratedKeys="true" keyProperty="rid" parameterType="boot.spring.po.Role">
     	insert into role (rolename) values(#{rolename}) 
     </insert>
-    <insert id="addRolePermission" useGeneratedKeys="true" keyProperty="rpid" parameterType="boot.spring.po.Role_permission">
+    <insert id="addRolePermission" useGeneratedKeys="true" keyProperty="rpid" parameterType="boot.spring.po.RolePermission">
     	insert into role_permission(roleid,permissionid)
     	values (#{role.rid},#{permission.pid})
     </insert>

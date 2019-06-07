@@ -1,33 +1,34 @@
 package boot.spring.po;
 
 public class UserRole {
-    private Integer urid;
 
-    private Integer userid;
+    private Integer id;
 
-    private Integer roleid;
+    private Integer userId;
 
-    public Integer getUrid() {
-        return urid;
+    private Integer roleId;
+
+    public Integer getId() {
+        return id;
     }
 
-    public void setUrid(Integer urid) {
-        this.urid = urid;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public Integer getUserid() {
-        return userid;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setUserid(Integer userid) {
-        this.userid = userid;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
-    public Integer getRoleid() {
-        return roleid;
+    public Integer getRoleId() {
+        return roleId;
     }
 
-    public void setRoleid(Integer roleid) {
-        this.roleid = roleid;
+    public void setRoleId(Integer roleId) {
+        this.roleId = roleId;
     }
 }

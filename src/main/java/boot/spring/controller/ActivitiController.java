@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import boot.spring.po.*;
 import org.activiti.bpmn.model.BpmnModel;
 import org.activiti.engine.FormService;
 import org.activiti.engine.HistoryService;
@@ -45,12 +46,7 @@ import boot.spring.pagemodel.DataGrid;
 import boot.spring.pagemodel.HistoryProcess;
 import boot.spring.pagemodel.LeaveTask;
 import boot.spring.pagemodel.RunningProcess;
-import boot.spring.po.LeaveApply;
-import boot.spring.po.Permission;
-import boot.spring.po.Role;
-import boot.spring.po.Role_permission;
-import boot.spring.po.User;
-import boot.spring.po.User_role;
+import boot.spring.po.UserRoleRelation;
 import boot.spring.service.LeaveService;
 import boot.spring.service.SystemService;
 import io.swagger.annotations.Api;
@@ -194,20 +190,20 @@ public class ActivitiController {
 		String userid=(String) session.getAttribute("username");
 		int uid=systemservice.getUidByusername(userid);
 		User user=systemservice.getUserByid(uid);
-		List<User_role> userroles=user.getUser_roles();
+		List<UserRoleRelation> userroles=user.getUserRoleRelations();
 		if(userroles==null)
 			return grid;
 		boolean flag=false;//默认没有权限
 		for(int k=0;k<userroles.size();k++){
-			User_role ur=userroles.get(k);
+			UserRoleRelation ur=userroles.get(k);
 			Role r=ur.getRole();
-			int roleid=r.getRid();
+			int roleid=r.getId();
 			Role role=systemservice.getRolebyid(roleid);
-			List<Role_permission> p=role.getRole_permission();
+			List<RolePermission> p=role.getRolePermissions();
 			for(int j=0;j<p.size();j++){
-				Role_permission rp=p.get(j);
+				RolePermission rp=p.get(j);
 				Permission permission=rp.getPermission();
-				if(permission.getPermissionname().equals("部门领导审批"))
+				if(permission.getRolePermissions().equals("部门领导审批"))
 					flag=true;
 				else
 					continue;
@@ -257,20 +253,20 @@ public class ActivitiController {
 		String userid=(String) session.getAttribute("username");
 		int uid=systemservice.getUidByusername(userid);
 		User user=systemservice.getUserByid(uid);
-		List<User_role> userroles=user.getUser_roles();
+		List<UserRoleRelation> userroles=user.getUserRoleRelations();
 		if(userroles==null)
 			return grid;
 		boolean flag=false;//默认没有权限
 		for(int k=0;k<userroles.size();k++){
-			User_role ur=userroles.get(k);
+			UserRoleRelation ur=userroles.get(k);
 			Role r=ur.getRole();
-			int roleid=r.getRid();
+			int roleid=r.getId();
 			Role role=systemservice.getRolebyid(roleid);
-			List<Role_permission> p=role.getRole_permission();
+			List<RolePermission> p=role.getRolePermissions();
 			for(int j=0;j<p.size();j++){
-				Role_permission rp=p.get(j);
+				RolePermission rp=p.get(j);
 				Permission permission=rp.getPermission();
-				if(permission.getPermissionname().equals("人事审批"))
+				if(permission.getRolePermissions().equals("人事审批"))
 					flag=true;
 				else
 					continue;

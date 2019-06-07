@@ -3,34 +3,50 @@ package boot.spring.po;
 import java.util.List;
 
 public class Role {
-	int rid;
-	String rolename;
-	List<User_role> user_roles;  
-	List<Role_permission> role_permissions;
-	public int getRid() {
-		return rid;
+	private int id;
+	private String name;
+	private List<UserRoleRelation> useRoleRelations;
+	private List<RolePermission> rolePermissions;
+
+	public int getId() {
+		return id;
 	}
-	public void setRid(int rid) {
-		this.rid = rid;
+
+	public void setId(int id) {
+		this.id = id;
 	}
-	public String getRolename() {
-		return rolename;
+
+	public String getName() {
+		return name;
 	}
-	public void setRolename(String rolename) {
-		this.rolename = rolename;
+
+	public void setName(String name) {
+		this.name = name;
 	}
-	public List<User_role> getUser_roles() {
-		return user_roles;
+
+	public List<UserRoleRelation> getUseRoleRelations() {
+		return useRoleRelations;
 	}
-	public void setUser_roles(List<User_role> user_roles) {
-		this.user_roles = user_roles;
+
+	public void setUseRoleRelations(List<UserRoleRelation> useRoleRelations) {
+		this.useRoleRelations = useRoleRelations;
 	}
-	public List<Role_permission> getRole_permission() {
-		return role_permissions;
+
+	public List<RolePermission> getRolePermissions() {
+		return rolePermissions;
 	}
-	public void setRole_permission(List<Role_permission> role_permission) {
-		this.role_permissions = role_permission;
+
+	public void setRolePermissions(List<RolePermission> rolePermissions) {
+		this.rolePermissions = rolePermissions;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "Role{" +
+				"id=" + id +
+				", name='" + name + '\'' +
+				", useRoleRelations=" + useRoleRelations +
+				", rolePermissions=" + rolePermissions +
+				'}';
+	}
 }

@@ -9,6 +9,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import boot.spring.po.UserRoleRelation;
 import org.activiti.engine.HistoryService;
 import org.activiti.engine.RepositoryService;
 import org.activiti.engine.RuntimeService;
@@ -37,7 +38,6 @@ import boot.spring.pagemodel.RunningProcess;
 import boot.spring.po.PurchaseApply;
 import boot.spring.po.Role;
 import boot.spring.po.User;
-import boot.spring.po.User_role;
 import boot.spring.service.PurchaseService;
 import boot.spring.service.SystemService;
 import io.swagger.annotations.Api;
@@ -169,14 +169,14 @@ public class PurchaseController {
 		String userid=(String) session.getAttribute("username");
 		int uid=systemservice.getUidByusername(userid);
 		User user=systemservice.getUserByid(uid);
-		List<User_role> userroles=user.getUser_roles();
+		List<UserRoleRelation> userroles=user.getUserRoleRelations();
 		if(userroles==null||userroles.size()==0)
 			return grid;
 		boolean flag=false;
-		for(User_role ur:userroles)
+		for(UserRoleRelation ur:userroles)
 		{
 			Role r=ur.getRole();
-			if(r.getRolename().equals("采购经理")){
+			if(r.getName().equals("采购经理")){
 				flag=true;
 			}
 		}
@@ -318,14 +318,14 @@ public class PurchaseController {
 		String userid=(String) session.getAttribute("username");
 		int uid=systemservice.getUidByusername(userid);
 		User user=systemservice.getUserByid(uid);
-		List<User_role> userroles=user.getUser_roles();
+		List<UserRoleRelation> userroles=user.getUserRoleRelations();
 		if(userroles==null||userroles.size()==0)
 			return grid;
 		boolean flag=false;
-		for(User_role ur:userroles)
+		for(UserRoleRelation ur:userroles)
 		{
 			Role r=ur.getRole();
-			if(r.getRolename().equals("财务管理员")){
+			if(r.getName().equals("财务管理员")){
 				flag=true;
 			}
 		}
@@ -385,14 +385,14 @@ public class PurchaseController {
 		String userid=(String) session.getAttribute("username");
 		int uid=systemservice.getUidByusername(userid);
 		User user=systemservice.getUserByid(uid);
-		List<User_role> userroles=user.getUser_roles();
+		List<UserRoleRelation> userroles=user.getUserRoleRelations();
 		if(userroles==null||userroles.size()==0)
 			return grid;
 		boolean flag=false;
-		for(User_role ur:userroles)
+		for(UserRoleRelation ur:userroles)
 		{
 			Role r=ur.getRole();
-			if(r.getRolename().equals("总经理")){
+			if(r.getName().equals("总经理")){
 				flag=true;
 			}
 		}
@@ -450,14 +450,14 @@ public class PurchaseController {
 		String userid=(String) session.getAttribute("username");
 		int uid=systemservice.getUidByusername(userid);
 		User user=systemservice.getUserByid(uid);
-		List<User_role> userroles=user.getUser_roles();
+		List<UserRoleRelation> userroles=user.getUserRoleRelations();
 		if(userroles==null||userroles.size()==0)
 			return grid;
 		boolean flag=false;
-		for(User_role ur:userroles)
+		for(UserRoleRelation ur:userroles)
 		{
 			Role r=ur.getRole();
-			if(r.getRolename().equals("出纳员")){
+			if(r.getName().equals("出纳员")){
 				flag=true;
 			}
 		}
